@@ -1,0 +1,529 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>java_level2 | 鸷鸟</title><meta name="author" content="Kun"><meta name="copyright" content="Kun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="40道选择题（1分一道，40分） 基本操作题（18分） 简单应用题（24分） 综合应用题（18分） 选择题1.计算机完成一条指令花费的时间称为一个（指令周期） 2.顺序程序不具有(并发性) 3.算法的优化主要通过编制技巧实现（❌） 4.对数据压缩存储能减少空间复杂度 5.队 先进先出 栈 先进后出 6.设某棵树的度为3，其中度为3，2，1度节点个数分别为3，0，4，求叶子结点 1234设为n所有节">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java_level2">
+<meta property="og:url" content="http://example.com/2024/03/25/java-level2/index.html">
+<meta property="og:site_name" content="鸷鸟">
+<meta property="og:description" content="40道选择题（1分一道，40分） 基本操作题（18分） 简单应用题（24分） 综合应用题（18分） 选择题1.计算机完成一条指令花费的时间称为一个（指令周期） 2.顺序程序不具有(并发性) 3.算法的优化主要通过编制技巧实现（❌） 4.对数据压缩存储能减少空间复杂度 5.队 先进先出 栈 先进后出 6.设某棵树的度为3，其中度为3，2，1度节点个数分别为3，0，4，求叶子结点 1234设为n所有节">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/2307.JPG">
+<meta property="article:published_time" content="2024-03-25T00:02:06.000Z">
+<meta property="article:modified_time" content="2024-03-25T00:04:33.807Z">
+<meta property="article:author" content="Kun">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/2307.JPG"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/03/25/java-level2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'java_level2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-25 08:04:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/2307.JPG" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="鸷鸟"><span class="site-name">鸷鸟</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">java_level2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-25T00:02:06.000Z" title="发表于 2024-03-25 08:02:06">2024-03-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-25T00:04:33.807Z" title="更新于 2024-03-25 08:04:33">2024-03-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="java_level2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>40道选择题（1分一道，40分）</p>
+<p>基本操作题（18分）</p>
+<p>简单应用题（24分）</p>
+<p>综合应用题（18分）</p>
+<h3 id="选择题"><a href="#选择题" class="headerlink" title="选择题"></a>选择题</h3><p>1.计算机完成一条指令花费的时间称为一个（指令周期）</p>
+<p>2.顺序程序不具有(并发性)</p>
+<p>3.算法的优化主要通过编制技巧实现（❌）</p>
+<p>4.对数据压缩存储能减少空间复杂度</p>
+<p>5.队 先进先出 栈 先进后出</p>
+<p>6.设某棵树的度为3，其中度为3，2，1度节点个数分别为3，0，4，求叶子结点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">设为n</span><br><span class="line">所有节点度数之和+1 = 各个节点个数之和+叶子节点之和</span><br><span class="line">3x3+2x0+4x1+1= 3+0+4+n</span><br><span class="line">14 = 7 +n </span><br></pre></td></tr></table></figure>
+
+<p>7.数据库管理技术度三个阶段:人工管理阶段、文件系统阶段、数据库系统阶段。只有人工管理阶段没有专门的软件</p>
+<p>8.给一个关系模式，给出一个一对多的关系，要你给出关系的键()   就是唯一确定的东西，比如学号和课程号</p>
+<p>9.命名原则：常量名一定大写，类名和接口名的首字母一定大写</p>
+<p>10.java程序独立于平台  选（分开）</p>
+<p>11.boolean类型不能转换为其他基本数据类型</p>
+<ol start="12">
+<li><p>？ ：   对就选前面的，反之后面</p>
+</li>
+<li><p>表达式语句 ，就是加减乘除</p>
+</li>
+<li><p>x &#x3D; “abc”, y &#x3D;1,z&#x3D;2,u&#x3D;3   x+y+z+u &#x3D; abc123   前面有字符串那么后面全都是字符拼接</p>
+</li>
+<li><p>字符相减  a对应97，A是65</p>
+</li>
+<li><p>跳转语句 （break,continue）</p>
+</li>
+<li><p>重载：就是class里有多个重复的方法名，比如构造方法这些。</p>
+</li>
+<li><p>构造方法没有返回值，不用void，构造方法名必须和类名相同</p>
+</li>
+<li><p>调用顺序一个一个看就行</p>
+</li>
+<li><p>子类改变不了父类只能增添方法</p>
+</li>
+<li><p>抽象方法必须要在抽象类里面；抽象类中可以不包括抽象方法；抽象方法不能有方法体也就是大括号{}</p>
+</li>
+<li><p>ArithmeticException 算数错误 用在分母为0上</p>
+</li>
+<li><p>自定义异常类的父类是Exception</p>
+</li>
+<li><p>类String的方法有valueOf charAt toUpper toLower等等</p>
+</li>
+<li><p>for循环的length</p>
+</li>
+<li><p>二进制写入整数就找 整形int</p>
+</li>
+<li><p>字节的输入输出流IO 字符就是Reader和Writer</p>
+</li>
+<li><p>一个字节是8个位，字符可能是2或者3或者别的个数的字节</p>
+</li>
+<li><p>看到filename 找 file</p>
+</li>
+<li><p>处理的事件类找(WindowEvent e)</p>
+</li>
+<li><p>getSize()获取窗口的大小，getForeground()获取构件前景色，paint()绘画</p>
+</li>
+<li><p>Swing构件是AWT的扩展 javax.awt.swing.*  全都有个大写的J</p>
+</li>
+<li><p>看到线程是由什么组成，只要是看得懂的就是错</p>
+</li>
+<li><p>线程数据是可以共享的</p>
+</li>
+<li><p>多线程并发执行，可能会出现紊乱</p>
+</li>
+<li><p>没有构造方法直接运行会报错</p>
+</li>
+<li><p>一定改变当前状态的是 sleep()   认为从运行到睡觉是状态的改变</p>
+</li>
+<li><p>二级选择题中看到 synchronized （同步）直接选就行，如果四个都有这个就选synchronized （this）</p>
+</li>
+<li><p>向Applet小程序传参数用&lt;param加上**两个参数**就行&gt;</p>
+</li>
+<li><p>要使用外存储器，先调入内存储器</p>
+</li>
+<li><p>进程是程序的执行过程</p>
+</li>
+<li><p>循环队列是顺序存储结构，别管他什么什么指针什么的</p>
+</li>
+<li><p>++a 是先加再使用这个数，a++是先用了这个数再进行加</p>
+</li>
+<li><p>在二级里的switch 用 String类型是编译错误也不能是Boolean</p>
+</li>
+<li><p>while(1) 里1不等于ture，而for(::)可以无限循环</p>
+</li>
+<li><p>看到内部类名就选匿名，内部类名称不能与定义他的类名称相同</p>
+</li>
+<li><p>注意看创建一个对象的前后单词是否大小写一致，否则编译错误</p>
+</li>
+<li><p>类变量就是静态变量，必须要有static</p>
+</li>
+<li><p>throw抛出</p>
+</li>
+<li><p>记index &#x3D; -1,while(index **&gt;&#x3D;**0)</p>
+</li>
+<li><p>一道题html网址的时候 Reader read &#x3D; new InputStream</p>
+</li>
+<li><p>过滤输入流 FilterInputStream</p>
+</li>
+<li><p>将文件写入一个文件输出流（即1.看见了outputstream 2.看见了文件比如steam.exe）就选FileOutputStream</p>
+</li>
+<li><p>所有的字节&#x2F;字符输出&#x2F;输入都从InputStream&#x2F;OutputStream&#x2F;Writer&#x2F;Reader来继承</p>
+</li>
+<li><p>点击按钮是 一个actionEvent ，行为事件</p>
+</li>
+<li><p>Swing相比AWT新增的布局管理器，BoxLayout</p>
+</li>
+<li><p>适配器类有7个1.ComponentAdapter2.ContainerAdapter3.FocusAdapter4.MouseAdapter5.KeyAdapter6.MouseMotionAdapter7.WindowAdapter 构件容器焦点鼠标键盘 鼠标运动器 窗口</p>
+</li>
+<li><p>一个进程包含多个线程</p>
+</li>
+<li><p>多线程里的run方法没有参数，祝你成功 这道题</p>
+</li>
+<li><p>线程在运行让他阻塞用wait（）、sleep（）、join（）</p>
+</li>
+<li><p>小程序Applet里的.class不能用java命令运行</p>
+</li>
+<li><p>运算器—算数和逻辑运算</p>
+</li>
+<li><p>计算机虚拟内存最大容量取决于 <u>计算机地址位数</u></p>
+</li>
+<li><p>循环链表存储空间可以连续也可以不连续</p>
+</li>
+<li><p>栈 top &#x3D; n  进行操作后top &#x3D; m  ，栈内元素个数&#x3D;n-m</p>
+</li>
+<li><p>度为0的结点（叶子结点）永远比度为2的结点多一个</p>
+</li>
+<li><p>对象有封装性，对象间的通信是靠消息传递</p>
+</li>
+<li><p>软件 — 功能需求</p>
+</li>
+<li><p>数据库不管网络通信</p>
+</li>
+<li><p>关系型数据库规范化 – —插入删除异常，数据冗余</p>
+</li>
+<li><p><img src="java-level2/image-20240323151043877.png" alt="image-20240323151043877" style="zoom:50%;" />  记—链接</p>
+</li>
+<li><p>Java为移动设备提供的平台是ME</p>
+</li>
+<li><p>Java的字符码集Unicode</p>
+</li>
+<li><p>单精度 有f的</p>
+</li>
+<li><p>位运算符就是 &gt;&gt;  &lt;&lt; 这些</p>
+</li>
+<li><p>文件前后一致  比如 ObjectInputStream o &#x3D; new ObjectInputStream</p>
+</li>
+<li><p>io写完要close</p>
+</li>
+<li><p>写入内存的类 ByteArrayOutputStream</p>
+</li>
+<li><p>implements ActionListener</p>
+</li>
+<li><p>java线性模型三部分组成 1. CPU2.CPU执行的代码3.代码操作的数据</p>
+</li>
+<li><p>多线程里面start()是类Thread类的方法，run()只是Runnable接口的方法</p>
+</li>
+<li><p>线程运行，下一个状态都有可能</p>
+</li>
+<li><p>Applet 里初始化之后先start再run再stop</p>
+</li>
+<li><p>整数在计算机中通用格式 —–补码</p>
+</li>
+<li><p>操作系统中，文件名转换成文件存储地址—–文件目录</p>
+</li>
+<li><p>循环队列的 首和尾指针相同的时候，要么就是满要么就是空</p>
+</li>
+<li><p>前序（根左右），中序（左中右），后序（左右根）</p>
+</li>
+<li><p>对象没规则</p>
+</li>
+<li><p>软件工程三要素：方法 工具 过程</p>
+</li>
+<li><p>团长是一对多</p>
+</li>
+<li><p>不满足第一范式也就是其中一个属性可以再分，如学生可以再分成学号和姓名</p>
+</li>
+<li><p>java并发机制是多线程</p>
+</li>
+<li><p>注意看switch里面有没有break</p>
+</li>
+<li><p>整数、浮点类型默认为0，引用类型默认值为null</p>
+</li>
+<li><p>子类覆盖父类要一模一样用public</p>
+</li>
+<li><p>默认的包是java.lang</p>
+</li>
+<li><p>parseInt()是把整数的String类型转换成int类型，若是如10.5这种会报错</p>
+</li>
+<li><p>数组是size，其他是length()</p>
+</li>
+<li><p>遇到质数什么的  %</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">number % primes[i]==<span class="number">0L</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JPanel</p>
+</li>
+<li><p>两个进程同时进行，顺序是随机的</p>
+</li>
+<li><p>yield—-可使同优先级线程重新获得运行机会</p>
+</li>
+<li><p>死锁里—解锁是按加锁的反序释放</p>
+</li>
+<li><p>并行工作程度最高的是通道</p>
+</li>
+<li><p>缓冲技术用于—-提高交换信息的速度</p>
+</li>
+<li><p>快排最多的次数 n *(n-1)&#x2F;2</p>
+</li>
+<li><p>front&#x3D;24 ,rear &#x3D;25  n  &#x3D;25-24 &#x3D;1,   front &#x3D;25 ,rear&#x3D;24 24-25+50 &#x3D; 49</p>
+</li>
+<li><p>黑盒测试 —–功能</p>
+</li>
+<li><p>概念模型—- ER</p>
+</li>
+<li><p>关系最高的是（从低到高1NF—BCNF） 如果主键比如课程号可以决定课程名，就是有依赖，就不能成第二范式）</p>
+</li>
+<li><p>java支持分布式</p>
+</li>
+<li><p>public只能有一个</p>
+</li>
+<li><p>javap —-反汇编</p>
+</li>
+<li><p>++优先级比+&#x3D;高</p>
+</li>
+<li><p>java所有类的父类Object</p>
+</li>
+<li><p>接口WindowListener的方法 closing closed open</p>
+</li>
+<li><p>写入对象是 writeObject</p>
+</li>
+<li><p>对象的序列化—存储对象—-Serializable</p>
+</li>
+<li><p>Swing是图形</p>
+</li>
+<li><p>如果很上面就是start</p>
+</li>
+<li><p>加锁的语句 syn</p>
+</li>
+<li><p>小程序事件处理机制是监听器</p>
+</li>
+<li><p>总线带宽—–传输率</p>
+</li>
+<li><p>如果CPU就绪了– 马上进入运行状态</p>
+</li>
+<li><p>快排一次数据交换能消除多个逆序</p>
+</li>
+<li><p>带链栈空 top&#x3D;bottom&#x3D;Null</p>
+</li>
+<li><p>结构化设计原则–自顶而下–逐步求精–模块化–限制使用goto语句</p>
+</li>
+<li><p>深度等于控制层数</p>
+</li>
+<li><p>数据模型组成部分 数据结构-操作-约束</p>
+</li>
+<li><p>package小写</p>
+</li>
+<li><p>java编程中public尽量少</p>
+</li>
+<li><p>子类权限必须要高于父类</p>
+</li>
+<li><p>正则表达式对字符串所要操作 （❌）</p>
+</li>
+<li><p>让进程阻塞 join sleep wait</p>
+</li>
+<li><p>public void paint()——Graphics</p>
+</li>
+<li><p>进程的5种重要属性 动态、共享、独立、制约、并发</p>
+</li>
+<li><p>线性结构一定有顺序，但是可以采用链式</p>
+</li>
+<li><p>死记2n个结点的完全二叉树种 n个叶子结点</p>
+</li>
+<li><p>全局数据结构—概念模式</p>
+</li>
+<li><p>！和++ – 一样优先级高</p>
+</li>
+<li><p>类方法不可以访问实例变量（静态变量）</p>
+</li>
+<li><p>JComboBox不是容器</p>
+</li>
+<li><p>网格 GridLayout</p>
+</li>
+<li><p>Thread属于lang包</p>
+</li>
+<li><p>看到printChar就runnble</p>
+</li>
+<li></li>
+</ol>
+<h3 id="基本操作题"><a href="#基本操作题" class="headerlink" title="基本操作题"></a>基本操作题</h3><p>1.普通的循环</p>
+<p>2.补全（从上下文找）</p>
+<p>3.退出System.exit(0)   &#x2F;&#x2F;结构体</p>
+<p>4.JOptionPane.showMessageDialog() 看上下文判断是否要打印对话框</p>
+<p>5.补全psvm</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6.顺序调用构造方法this()]</p>
+<p>7.补全参数类型（上下文找）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> <span class="variable">canshu</span> <span class="operator">=</span><span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>8.extends Thread  找start还是run</p>
+<p>9.线程第一第二第一第二 getName()</p>
+<p>10.看题目填abstract小写</p>
+<p>11.两个String的相等与不等</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span><span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="type">Stirng</span> <span class="variable">s2</span> <span class="operator">=</span><span class="string">&quot;hello&quot;</span>;</span><br><span class="line">s1 == s2   <span class="comment">//这是错的，这里比较的是地址</span></span><br><span class="line">s1.equals(s2)  <span class="comment">//这是对的</span></span><br></pre></td></tr></table></figure>
+
+<ol start="12">
+<li></li>
+</ol>
+<h3 id="简单应用题"><a href="#简单应用题" class="headerlink" title="简单应用题"></a>简单应用题</h3><p>1.打印题（就是打印阶乘啊什么的）</p>
+<p>2.补全参数如Arrays.sort() 就找数组啊之类的</p>
+<p>3.补全方法从上下文找方法，比如get&#x2F;set</p>
+<p>4.Comparable是一个接口直接implements ,复数</p>
+<p>5.对异常的，看到 (xxxxException e) 就在前面加一个catch</p>
+<p>6.t.start() 后面要跟一个　public void run(){}</p>
+<p>7.设置名称就 setName(str)</p>
+<ol start="8">
+<li>fw.write(b)</li>
+<li>FileReader fr &#x3D; new FileReader(f2)</li>
+<li>有文件就这样import java.io.*</li>
+<li>以行的方式读入就 new BufferedReader(new InputStreamReader(<strong>System.in</strong>))</li>
+<li>有write（）就上下找就行</li>
+</ol>
+<h3 id="综合应用题"><a href="#综合应用题" class="headerlink" title="综合应用题"></a>综合应用题</h3><p>观察周围全是固定的</p>
+<p>1.<u>actionPerformed</u> (ActionEvent e)</p>
+<p>2.c.add() 里面的元素往上找</p>
+<p>3.<u>output</u>.setText()  </p>
+<p>4.WindowClosing这类后面的括号里的 (<u>WindowEvent</u> e)</p>
+<p>5.ArithmeticException</p>
+<p>6.ArrayIndexOutOfBoundsException</p>
+<p>7.小程序题 必须有 extends JApplet 然后必须有初始化 init()</p>
+<p>8.题目是add什么什么的，就找Container的对象,或者其他的，往上看</p>
+<p>9.setVisible(true)</p>
+<p>10.labelT.setFont(new Font((String)<strong><u>faceCombo</u></strong>.getSelectedItem)红军不怕远征难这道题</p>
+<p>11.extends JFrame</p>
+<ol start="12">
+<li>addActionListener(this)   一般都是填this</li>
+<li>frame &#x3D;new JFrame(这里面是程序界面的标题)</li>
+</ol>
+<p>14.和鼠标特别密切的就extends MouseAdapter</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Kun</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/03/25/java-level2/">http://example.com/2024/03/25/java-level2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">鸷鸟</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/2307.JPG" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/03/11/vim-learn/" title="vim_learn"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">vim_learn</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/2307.JPG" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Kun</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">选择题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">基本操作题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">简单应用题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E5%BA%94%E7%94%A8%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">综合应用题</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/25/java-level2/" title="java_level2">java_level2</a><time datetime="2024-03-25T00:02:06.000Z" title="发表于 2024-03-25 08:02:06">2024-03-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/11/vim-learn/" title="vim_learn">vim_learn</a><time datetime="2024-03-11T02:35:03.000Z" title="发表于 2024-03-11 10:35:03">2024-03-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/11/Redis/" title="Redis">Redis</a><time datetime="2024-03-11T02:21:19.000Z" title="发表于 2024-03-11 10:21:19">2024-03-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/06/css%E5%AD%A6%E4%B9%A0/" title="无题">无题</a><time datetime="2023-12-06T07:10:15.282Z" title="发表于 2023-12-06 15:10:15">2023-12-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/06/HTML%E5%AD%A6%E4%B9%A0/" title="HTML学习">HTML学习</a><time datetime="2023-12-06T03:42:13.000Z" title="发表于 2023-12-06 11:42:13">2023-12-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Kun</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
