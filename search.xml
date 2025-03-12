@@ -4,41 +4,12 @@
   
     
     <entry>
-      <title>你好，世界！</title>
-      <link href="/2025/02/19/helloworld/"/>
-      <url>/2025/02/19/helloworld/</url>
+      <title>test</title>
+      <link href="/2024/11/01/%E6%9C%AC%E5%9C%B0Ollama-OpenWebUI%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+      <url>/2024/11/01/%E6%9C%AC%E5%9C%B0Ollama-OpenWebUI%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B/</url>
       
-        <content type="html"><![CDATA[<h1 id="你好，世界！"><a href="#你好，世界！" class="headerlink" title="你好，世界！"></a>你好，世界！</h1><p>这是我的第一篇博客。</p>]]></content>
+        <content type="html"><![CDATA[<p>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容<br>这是内容</p>]]></content>
       
-      
-      <categories>
-          
-          <category> 生活1 </category>
-          
-          <category> 生活2 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>世界，你好！</title>
-      <link href="/2025/02/19/worldhello/"/>
-      <url>/2025/02/19/worldhello/</url>
-      
-        <content type="html"><![CDATA[<h1 id="你好，世界！"><a href="#你好，世界！" class="headerlink" title="你好，世界！"></a>你好，世界！</h1><p>这是我的第一篇博客。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 生活3 </category>
-          
-          <category> 生活4 </category>
-          
-      </categories>
       
       
     </entry>
