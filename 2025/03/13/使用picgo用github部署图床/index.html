@@ -20,28 +20,42 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="K">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="无论是写博客还是开发一些东西，图片的存储都是一个小问题。本地存储+相对路径是一个方法，但是部署到服务器上的存储空间占用大大增加，尤其是要迁移文件时，如果相对路径没弄好，就清一色的 🙅 了所以使用一个远程图床就很有必要了现在比如阿里云 oss、腾讯云 cos、七牛云、又拍云。但是这些国内平台对图片内容审查比较严格，容易图片丢失，所以我们还是推荐使用 github. 1.PicGo 安装PicGo是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="超好用的工具Picgo配合Github白嫖图床">
+<meta property="og:url" content="http://example.com/2025/03/13/%E4%BD%BF%E7%94%A8picgo%E7%94%A8github%E9%83%A8%E7%BD%B2%E5%9B%BE%E5%BA%8A/index.html">
 <meta property="og:site_name" content="K">
+<meta property="og:description" content="无论是写博客还是开发一些东西，图片的存储都是一个小问题。本地存储+相对路径是一个方法，但是部署到服务器上的存储空间占用大大增加，尤其是要迁移文件时，如果相对路径没弄好，就清一色的 🙅 了所以使用一个远程图床就很有必要了现在比如阿里云 oss、腾讯云 cos、七牛云、又拍云。但是这些国内平台对图片内容审查比较严格，容易图片丢失，所以我们还是推荐使用 github. 1.PicGo 安装PicGo是">
 <meta property="og:locale">
+<meta property="og:image" content="http://kunrea.top/blog/20250313102837699.png">
+<meta property="og:image" content="http://kunrea.top/blog/20250313103926156.png">
+<meta property="og:image" content="http://kunrea.top/blog/20250313104023020.png">
+<meta property="og:image" content="http://kunrea.top/blog/20250313104247571.png">
+<meta property="og:image" content="http://kunrea.top/blog/20250313104331409.png">
+<meta property="og:image" content="http://kunrea.top/blog/20250313104454992.png">
+<meta property="og:image" content="http://kunrea.top/blog/20250313104515502.png">
+<meta property="article:published_time" content="2025-03-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-03-13T02:57:52.429Z">
 <meta property="article:author" content="yukun">
+<meta property="article:tag" content="图床">
+<meta property="article:tag" content="工具">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kunrea.top/blog/20250313102837699.png">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2025/03/13/%E4%BD%BF%E7%94%A8picgo%E7%94%A8github%E9%83%A8%E7%BD%B2%E5%9B%BE%E5%BA%8A/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'cn'
   };
 </script>
 
-  <title>K</title>
+  <title>超好用的工具Picgo配合Github白嫖图床 | K</title>
   
 
 
@@ -149,90 +163,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/13/macOS%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8%E9%9A%90%E7%A7%81%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%B2%A1%E6%9C%89%E4%BF%A1%E4%BB%BB%E7%9A%84%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/apple-touch-icon.png">
-      <meta itemprop="name" content="yukun">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="K">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/03/13/macOS%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8%E9%9A%90%E7%A7%81%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%B2%A1%E6%9C%89%E4%BF%A1%E4%BB%BB%E7%9A%84%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">macOS显示文件已损坏，但是在隐私设置里没有信任的方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2025-03-13 00:00:00 / Modified: 10:17:07" itemprop="dateCreated datePublished" datetime="2025-03-13T00:00:00+08:00">2025-03-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MAC/" itemprop="url" rel="index"><span itemprop="name">MAC</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>很多时候 macOS 从网上下载的应用打开时会显示</p>
-<p><img src="http://kunrea.top/blog/20250313100802013.png"></p>
-<p>这是因为在 macos 的<code>允许以下来源的应用程序</code>设置的原因</p>
-<p><img src="http://kunrea.top/blog/20250313101028879.png"></p>
-<p>我们可以使用以下命令</p>
-<p><code>sudo spctl --master-disable </code></p>
-<p>随后在这设置<code>所有来源</code></p>
-<p><strong>但是，更新之后可能会显示</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> spctl --master-disable</span></span><br><span class="line">Password: Globally disabling the assessment system needs to be confirmed in System Settings.</span><br></pre></td></tr></table></figure>
-
-<p>我们可以使用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> xattr -r -d com.apple.quarantine 应用路径</span></span><br></pre></td></tr></table></figure>
-
-<p>就可以使用了</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
@@ -248,10 +182,9 @@
       <meta itemprop="name" content="K">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/03/13/%E4%BD%BF%E7%94%A8picgo%E7%94%A8github%E9%83%A8%E7%BD%B2%E5%9B%BE%E5%BA%8A/" class="post-title-link" itemprop="url">超好用的工具Picgo配合Github白嫖图床</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          超好用的工具Picgo配合Github白嫖图床
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -284,31 +217,64 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>无论是写博客还是开发一些东西，图片的存储都是一个小问题。<br>本地存储+相对路径是一个方法，但是部署到服务器上的存储空间占用大大增加，尤其是要迁移文件时，如果相对路径没弄好，就清一色的 🙅 了<br><img src="http://kunrea.top/blog/20250313102837699.png"><br>所以使用一个远程图床就很有必要了<br>现在比如阿里云 oss、腾讯云 cos、七牛云、又拍云。<br>但是这些国内平台对图片内容审查比较严格，容易图片丢失，所以我们还是推荐使用 github.</p>
+        <p>无论是写博客还是开发一些东西，图片的存储都是一个小问题。<br>本地存储+相对路径是一个方法，但是部署到服务器上的存储空间占用大大增加，尤其是要迁移文件时，如果相对路径没弄好，就清一色的 🙅 了<br><img src="http://kunrea.top/blog/20250313102837699.png"><br>所以使用一个远程图床就很有必要了<br>现在比如阿里云 oss、腾讯云 cos、七牛云、又拍云。<br>但是这些国内平台对图片内容审查比较严格，容易图片丢失，所以我们还是推荐使用 github.</p>
 <h4 id="1-PicGo-安装"><a href="#1-PicGo-安装" class="headerlink" title="1.PicGo 安装"></a>1.PicGo 安装</h4><p><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo">PicGo</a>是一个<strong>一个用于快速上传图片并获取图片 URL 链接的工具</strong>，目前有 windows 和 macOS 版本。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/03/13/%E4%BD%BF%E7%94%A8picgo%E7%94%A8github%E9%83%A8%E7%BD%B2%E5%9B%BE%E5%BA%8A/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+<span id="more"></span>
+
+<p>支持下列图床（2025.3.13）</p>
+<ul>
+<li><code>七牛图床</code> v1.0</li>
+<li><code>腾讯云 COS v4\v5 版本</code> v1.1 &amp; v1.5.0</li>
+<li><code>又拍云</code> v1.2.0</li>
+<li><code>GitHub</code> v1.5.0</li>
+<li><code>SM.MS V2</code> v2.3.0-beta.0</li>
+<li><code>阿里云 OSS</code> v1.6.0</li>
+<li><code>Imgur</code></li>
+</ul>
+<p>macOS 使用 homebrew 安装 picgo</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install picgo --cask</span><br></pre></td></tr></table></figure>
+
+<p>安装后打开</p>
+<p><img src="http://kunrea.top/blog/20250313103926156.png"></p>
+<p>我们可以在这里设置图床</p>
+<p><img src="http://kunrea.top/blog/20250313104023020.png"></p>
+<p><strong>我觉得最好用的一点是，能直接从剪切板上传，也就是截完图直接上传而不需要在本地创建图片。</strong></p>
+<h4 id="2-Github-token"><a href="#2-Github-token" class="headerlink" title="2.Github token"></a>2.Github token</h4><p><img src="http://kunrea.top/blog/20250313104247571.png"></p>
+<p>首先，我们在 github 上创建一个 public 仓库</p>
+<p><img src="http://kunrea.top/blog/20250313104331409.png"></p>
+<p>然后我们在 settings 里面设置</p>
+<p><img src="http://kunrea.top/blog/20250313104454992.png"></p>
+<p><img src="http://kunrea.top/blog/20250313104515502.png"></p>
+<p>然后我们把 token 填进来就可以使用了</p>
+
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/%E5%9B%BE%E5%BA%8A/" rel="tag"># 图床</a>
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2025/03/13/macOS%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8%E9%9A%90%E7%A7%81%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%B2%A1%E6%9C%89%E4%BF%A1%E4%BB%BB%E7%9A%84%E6%96%B9%E6%B3%95/" rel="next" title="macOS显示文件已损坏，但是在隐私设置里没有信任的方法">
+      macOS显示文件已损坏，但是在隐私设置里没有信任的方法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -361,6 +327,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-PicGo-%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">1.PicGo 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Github-token"><span class="nav-number">2.</span> <span class="nav-text">2.Github token</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
