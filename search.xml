@@ -2,6 +2,19 @@
 <search> 
   
   
+    
+    <entry>
+      <title></title>
+      <link href="/2025/03/13/macOS%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8%E9%9A%90%E7%A7%81%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%B2%A1%E6%9C%89%E4%BF%A1%E4%BB%BB%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+      <url>/2025/03/13/macOS%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8%E9%9A%90%E7%A7%81%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%B2%A1%E6%9C%89%E4%BF%A1%E4%BB%BB%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<p>很多时候macOS从网上下载的应用打开时会显示</p><p><img src="http://kunrea.top/blog/20250313100802013.png"></p><p>这是因为在macos的<code>允许以下来源的应用程序</code>设置的原因</p><p><img src="http://kunrea.top/blog/20250313101028879.png"></p><p>我们可以使用以下命令</p><p><code>sudo spctl --master-disable </code></p><p>随后在这设置<code>所有来源</code></p><p><strong>但是，更新之后可能会显示</strong></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> spctl --master-disable</span> </span><br><span class="line">Password: Globally disabling the assessment system needs to be confirmed in System Settings.</span><br></pre></td></tr></table></figure><p>我们可以使用</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> xattr -r -d com.apple.quarantine 应用路径</span></span><br></pre></td></tr></table></figure><p>就可以使用了</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
   
   
 </search>
