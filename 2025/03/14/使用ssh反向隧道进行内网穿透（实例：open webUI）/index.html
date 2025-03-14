@@ -20,22 +20,28 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="很多时候 macOS 从网上下载的应用打开时会显示  这是因为在 macos 的允许以下来源的应用程序设置的原因  我们可以使用以下命令 sudo spctl --master-disable  随后在这设置所有来源 但是，更新之后可能会显示 12$ sudo spctl --master-disablePassword: Globally disabling the assessment sys">
+  <meta name="description" content="引言既然我们已经有了一个云服务器，那么我们能否把它当成一个跳板，访问云服务器的某个端口时“反向代理”到另一个内网设备上部署的东西呢? 准备工作一台本地电脑  一台云服务器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="macOS显示文件已损坏，但是在隐私设置里没有信任的方法">
-<meta property="og:url" content="http://example.com/2025/03/13/macOS%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8%E9%9A%90%E7%A7%81%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%B2%A1%E6%9C%89%E4%BF%A1%E4%BB%BB%E7%9A%84%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="使用ssh反向隧道进行内网穿透">
+<meta property="og:url" content="http://example.com/2025/03/14/%E4%BD%BF%E7%94%A8ssh%E5%8F%8D%E5%90%91%E9%9A%A7%E9%81%93%E8%BF%9B%E8%A1%8C%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%EF%BC%88%E5%AE%9E%E4%BE%8B%EF%BC%9Aopen%20webUI%EF%BC%89/index.html">
 <meta property="og:site_name" content="K">
-<meta property="og:description" content="很多时候 macOS 从网上下载的应用打开时会显示  这是因为在 macos 的允许以下来源的应用程序设置的原因  我们可以使用以下命令 sudo spctl --master-disable  随后在这设置所有来源 但是，更新之后可能会显示 12$ sudo spctl --master-disablePassword: Globally disabling the assessment sys">
+<meta property="og:description" content="引言既然我们已经有了一个云服务器，那么我们能否把它当成一个跳板，访问云服务器的某个端口时“反向代理”到另一个内网设备上部署的东西呢? 准备工作一台本地电脑  一台云服务器">
 <meta property="og:locale">
-<meta property="og:image" content="http://kunrea.top/blog/20250313100802013.png">
-<meta property="og:image" content="http://kunrea.top/blog/20250313101028879.png">
-<meta property="article:published_time" content="2025-03-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-13T02:17:07.956Z">
+<meta property="og:image" content="http://kunrea.top/blog/20250314114456625.png">
+<meta property="og:image" content="http://kunrea.top/blog/20250314114330671.png">
+<meta property="og:image" content="http://kunrea.top/blog/20250314134454698.png">
+<meta property="og:image" content="http://kunrea.top/blog/IMG_9F1A295273B7-1.jpeg">
+<meta property="article:published_time" content="2025-03-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-03-14T06:13:38.490Z">
 <meta property="article:author" content="yukun">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="内网穿透">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://kunrea.top/blog/20250313100802013.png">
+<meta name="twitter:image" content="http://kunrea.top/blog/20250314114456625.png">
 
-<link rel="canonical" href="http://example.com/2025/03/13/macOS%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8%E9%9A%90%E7%A7%81%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%B2%A1%E6%9C%89%E4%BF%A1%E4%BB%BB%E7%9A%84%E6%96%B9%E6%B3%95/">
+<link rel="canonical" href="http://example.com/2025/03/14/%E4%BD%BF%E7%94%A8ssh%E5%8F%8D%E5%90%91%E9%9A%A7%E9%81%93%E8%BF%9B%E8%A1%8C%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%EF%BC%88%E5%AE%9E%E4%BE%8B%EF%BC%9Aopen%20webUI%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -48,7 +54,7 @@
   };
 </script>
 
-  <title>macOS显示文件已损坏，但是在隐私设置里没有信任的方法 | K</title>
+  <title>使用ssh反向隧道进行内网穿透 | K</title>
   
 
 
@@ -191,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/13/macOS%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8%E9%9A%90%E7%A7%81%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%B2%A1%E6%9C%89%E4%BF%A1%E4%BB%BB%E7%9A%84%E6%96%B9%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/14/%E4%BD%BF%E7%94%A8ssh%E5%8F%8D%E5%90%91%E9%9A%A7%E9%81%93%E8%BF%9B%E8%A1%8C%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%EF%BC%88%E5%AE%9E%E4%BE%8B%EF%BC%9Aopen%20webUI%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon.png">
@@ -204,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          macOS显示文件已损坏，但是在隐私设置里没有信任的方法
+          使用ssh反向隧道进行内网穿透
         </h1>
 
         <div class="post-meta">
@@ -215,7 +221,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2025-03-13 00:00:00 / Modified: 10:17:07" itemprop="dateCreated datePublished" datetime="2025-03-13T00:00:00+08:00">2025-03-13</time>
+              <time title="Created: 2025-03-14 00:00:00 / Modified: 14:13:38" itemprop="dateCreated datePublished" datetime="2025-03-14T00:00:00+08:00">2025-03-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,7 +229,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MAC/" itemprop="url" rel="index"><span itemprop="name">MAC</span></a>
+                  <a href="/categories/%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">网络</span></a>
                 </span>
             </span>
 
@@ -238,20 +244,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>很多时候 macOS 从网上下载的应用打开时会显示</p>
-<p><img src="http://kunrea.top/blog/20250313100802013.png"></p>
-<p>这是因为在 macos 的<code>允许以下来源的应用程序</code>设置的原因</p>
-<p><img src="http://kunrea.top/blog/20250313101028879.png"></p>
-<p>我们可以使用以下命令</p>
-<p><code>sudo spctl --master-disable </code></p>
-<p>随后在这设置<code>所有来源</code></p>
-<p><strong>但是，更新之后可能会显示</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> spctl --master-disable</span></span><br><span class="line">Password: Globally disabling the assessment system needs to be confirmed in System Settings.</span><br></pre></td></tr></table></figure>
+        <h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h4><p>既然我们已经有了一个云服务器，那么我们能否把它当成一个跳板，访问云服务器的某个端口时“反向代理”到另一个内网设备上部署的东西呢?</p>
+<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>一台本地电脑</p>
+<p><img src="http://kunrea.top/blog/20250314114456625.png"></p>
+<p>一台云服务器</p>
+<p><img src="http://kunrea.top/blog/20250314114330671.png"></p>
+<span id="more"></span>
 
-<p>我们可以使用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sudo</span> xattr -r -d com.apple.quarantine 应用路径</span></span><br></pre></td></tr></table></figure>
+<h4 id="反向隧道"><a href="#反向隧道" class="headerlink" title="反向隧道"></a>反向隧道</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ssh -R 0.0.0.0:3000:localhost:3000 -R 0.0.0.0:11434:localhost:11434 -N root@xxxxx.xxx</span></span><br></pre></td></tr></table></figure>
 
-<p>就可以使用了</p>
+<p>相关参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh -R [remote_port]:[bind_address]:[local_port] user@remotehost</span><br><span class="line"> remote_port：远程服务器上将要监听的端口号。</span><br><span class="line"> bind_address：本地机器上的IP地址，默认为localhost，表示只允许来自本地的连接。如果设置为0.0.0.0，则允许所有来源的连接。</span><br><span class="line"> local_port：本地机器上的端口号，数据包会被转发到这里。</span><br><span class="line">-N 的作用：不执行远程命令</span><br><span class="line">-f 表示后台运行</span><br></pre></td></tr></table></figure>
+
+<p>但是会发现外网访问不了，是因为绑定到了127.0.0.1上，只有本机可以访问，我们得把他绑定到0.0.0.0:port上，才能让外网访问。</p>
+<p>打开云服务器上的 <code>~/.ssh/sshd_config</code>或者<code>/etc/ssh/sshd_config</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">修改</span></span><br><span class="line">GatewayPorts yes</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://kunrea.top/blog/20250314134454698.png"></p>
+<p>然后重启ssh</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart ssh</span><br></pre></td></tr></table></figure>
+
+<p>重新建立反向隧道即可</p>
+<h4 id="autossh使用"><a href="#autossh使用" class="headerlink" title="autossh使用"></a>autossh使用</h4><p>autossh 是一个增强版的 SSH 工具，用于自动监控和重启 SSH 隧道。如果网络不稳定或连接断开，autossh 会尝试重新建立连接，非常适合需要持久隧道的场景，比如我的 Open WebUI 和 Ollama 服务。</p>
+<p>使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autossh -M 0 -f -N -o &quot;ServerAliveInterval 30&quot; -o &quot;ServerAliveCountMax 3&quot; -R 0.0.0.0:3000:localhost:3000 -R 0.0.0.0:11434:localhost:11434 root@xxxxx.xxx</span><br></pre></td></tr></table></figure>
+
+<p>具体我另开一篇</p>
+<h4 id="ollama-open-WebUI部署时外网访问没有模型"><a href="#ollama-open-WebUI部署时外网访问没有模型" class="headerlink" title="ollama+open WebUI部署时外网访问没有模型"></a>ollama+open WebUI部署时外网访问没有模型</h4><p><img src="http://kunrea.top/blog/IMG_9F1A295273B7-1.jpeg"></p>
+<p>这是因为在本地部署时，我们的ollama部署在localhost:11434端口，然后我们的openWebUI是从11434中读取模型。</p>
+<p>但是我们的ssh反向映射到了linux上之后，openWebUI在云服务器上面访问localhost:11434,也就是访问我们本地的这个端口，在这个过程里出问题了。</p>
+<p>我们使用<code>lsof -i :11434</code> 发现是<code>localhost:11434</code>或者<code>127.0.0.1:11434</code>也就是说云服务器访问本机的时候失败了。</p>
+<p>我们查看<a target="_blank" rel="noopener" href="https://github.com/ollama/ollama/blob/main/docs/faq.md">ollama文档</a>可以看到设置服务器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl setenv OLLAMA_HOST &quot;0.0.0.0:11434&quot;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -260,6 +285,12 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ssh/" rel="tag"># ssh</a>
+              <a href="/tags/linux/" rel="tag"># linux</a>
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag"># 内网穿透</a>
+          </div>
 
         
 
@@ -267,13 +298,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2025/03/13/%E4%BD%BF%E7%94%A8picgo%E7%94%A8github%E9%83%A8%E7%BD%B2%E5%9B%BE%E5%BA%8A/" rel="prev" title="超好用的工具Picgo配合Github白嫖图床">
-      <i class="fa fa-chevron-left"></i> 超好用的工具Picgo配合Github白嫖图床
+    <a href="/2025/03/13/macOS%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8%E9%9A%90%E7%A7%81%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%B2%A1%E6%9C%89%E4%BF%A1%E4%BB%BB%E7%9A%84%E6%96%B9%E6%B3%95/" rel="prev" title="macOS显示文件已损坏，但是在隐私设置里没有信任的方法">
+      <i class="fa fa-chevron-left"></i> macOS显示文件已损坏，但是在隐私设置里没有信任的方法
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2025/03/14/%E4%BD%BF%E7%94%A8ssh%E5%8F%8D%E5%90%91%E9%9A%A7%E9%81%93%E8%BF%9B%E8%A1%8C%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%EF%BC%88%E5%AE%9E%E4%BE%8B%EF%BC%9Aopen%20webUI%EF%BC%89/" rel="next" title="使用ssh反向隧道进行内网穿透">
-      使用ssh反向隧道进行内网穿透 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -332,6 +360,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E9%9A%A7%E9%81%93"><span class="nav-number">3.</span> <span class="nav-text">反向隧道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#autossh%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">autossh使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ollama-open-WebUI%E9%83%A8%E7%BD%B2%E6%97%B6%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E6%B2%A1%E6%9C%89%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">ollama+open WebUI部署时外网访问没有模型</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
