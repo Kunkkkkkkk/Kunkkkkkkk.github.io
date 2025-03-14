@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://kunrea.top/blog/20250314134454698.png">
 <meta property="og:image" content="http://kunrea.top/blog/IMG_9F1A295273B7-1.jpeg">
 <meta property="article:published_time" content="2025-03-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-14T06:13:38.490Z">
+<meta property="article:modified_time" content="2025-03-14T06:31:13.920Z">
 <meta property="article:author" content="yukun">
 <meta property="article:tag" content="ssh">
 <meta property="article:tag" content="linux">
@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2025-03-14 00:00:00 / Modified: 14:13:38" itemprop="dateCreated datePublished" datetime="2025-03-14T00:00:00+08:00">2025-03-14</time>
+              <time title="Created: 2025-03-14 00:00:00 / Modified: 14:31:13" itemprop="dateCreated datePublished" datetime="2025-03-14T00:00:00+08:00">2025-03-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,27 +253,26 @@
 <p>相关参数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh -R [remote_port]:[bind_address]:[local_port] user@remotehost</span><br><span class="line"> remote_port：远程服务器上将要监听的端口号。</span><br><span class="line"> bind_address：本地机器上的IP地址，默认为localhost，表示只允许来自本地的连接。如果设置为0.0.0.0，则允许所有来源的连接。</span><br><span class="line"> local_port：本地机器上的端口号，数据包会被转发到这里。</span><br><span class="line">-N 的作用：不执行远程命令</span><br><span class="line">-f 表示后台运行</span><br></pre></td></tr></table></figure>
 
-<p>但是会发现外网访问不了，是因为绑定到了127.0.0.1上，只有本机可以访问，我们得把他绑定到0.0.0.0:port上，才能让外网访问。</p>
+<p>但是会发现外网访问不了，是因为绑定到了 127.0.0.1 上，只有本机可以访问，我们得把他绑定到 0.0.0.0:port 上，才能让外网访问。</p>
 <p>打开云服务器上的 <code>~/.ssh/sshd_config</code>或者<code>/etc/ssh/sshd_config</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">修改</span></span><br><span class="line">GatewayPorts yes</span><br></pre></td></tr></table></figure>
 
 <p><img src="http://kunrea.top/blog/20250314134454698.png"></p>
-<p>然后重启ssh</p>
+<p>然后重启 ssh</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart ssh</span><br></pre></td></tr></table></figure>
 
 <p>重新建立反向隧道即可</p>
-<h4 id="autossh使用"><a href="#autossh使用" class="headerlink" title="autossh使用"></a>autossh使用</h4><p>autossh 是一个增强版的 SSH 工具，用于自动监控和重启 SSH 隧道。如果网络不稳定或连接断开，autossh 会尝试重新建立连接，非常适合需要持久隧道的场景，比如我的 Open WebUI 和 Ollama 服务。</p>
+<h4 id="autossh-使用"><a href="#autossh-使用" class="headerlink" title="autossh 使用"></a>autossh 使用</h4><p>autossh 是一个增强版的 SSH 工具，用于自动监控和重启 SSH 隧道。如果网络不稳定或连接断开，autossh 会尝试重新建立连接，非常适合需要持久隧道的场景，比如我的 Open WebUI 和 Ollama 服务。</p>
 <p>使用</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autossh -M 0 -f -N -o &quot;ServerAliveInterval 30&quot; -o &quot;ServerAliveCountMax 3&quot; -R 0.0.0.0:3000:localhost:3000 -R 0.0.0.0:11434:localhost:11434 root@xxxxx.xxx</span><br></pre></td></tr></table></figure>
 
 <p>具体我另开一篇</p>
-<h4 id="ollama-open-WebUI部署时外网访问没有模型"><a href="#ollama-open-WebUI部署时外网访问没有模型" class="headerlink" title="ollama+open WebUI部署时外网访问没有模型"></a>ollama+open WebUI部署时外网访问没有模型</h4><p><img src="http://kunrea.top/blog/IMG_9F1A295273B7-1.jpeg"></p>
-<p>这是因为在本地部署时，我们的ollama部署在localhost:11434端口，然后我们的openWebUI是从11434中读取模型。</p>
-<p>但是我们的ssh反向映射到了linux上之后，openWebUI在云服务器上面访问localhost:11434,也就是访问我们本地的这个端口，在这个过程里出问题了。</p>
+<h4 id="ollama-open-WebUI-部署时外网访问没有模型"><a href="#ollama-open-WebUI-部署时外网访问没有模型" class="headerlink" title="ollama+open WebUI 部署时外网访问没有模型"></a>ollama+open WebUI 部署时外网访问没有模型</h4><p><img src="http://kunrea.top/blog/IMG_9F1A295273B7-1.jpeg"></p>
+<p>这是因为在本地部署时，我们的 ollama 部署在 localhost:11434 端口，然后我们的 openWebUI 是从 11434 中读取模型。</p>
+<p>但是我们的 ssh 反向映射到了 linux 上之后，openWebUI 在云服务器上面访问 localhost:11434,也就是访问我们本地的这个端口，在这个过程里出问题了。</p>
 <p>我们使用<code>lsof -i :11434</code> 发现是<code>localhost:11434</code>或者<code>127.0.0.1:11434</code>也就是说云服务器访问本机的时候失败了。</p>
-<p>我们查看<a target="_blank" rel="noopener" href="https://github.com/ollama/ollama/blob/main/docs/faq.md">ollama文档</a>可以看到设置服务器</p>
+<p>我们查看<a target="_blank" rel="noopener" href="https://github.com/ollama/ollama/blob/main/docs/faq.md">ollama 文档</a>可以看到设置服务器</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">launchctl setenv OLLAMA_HOST &quot;0.0.0.0:11434&quot;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -298,7 +297,10 @@
     <a href="/2025/03/13/macOS%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%EF%BC%8C%E4%BD%86%E6%98%AF%E5%9C%A8%E9%9A%90%E7%A7%81%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%B2%A1%E6%9C%89%E4%BF%A1%E4%BB%BB%E7%9A%84%E6%96%B9%E6%B3%95/" rel="prev" title="macOS显示文件已损坏，但是在隐私设置里没有信任的方法">
       <i class="fa fa-chevron-left"></i> macOS显示文件已损坏，但是在隐私设置里没有信任的方法
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2025/03/14/AutoSSH/" rel="next" title="autossh介绍">
+      autossh介绍 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -357,7 +359,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E9%9A%A7%E9%81%93"><span class="nav-number">3.</span> <span class="nav-text">反向隧道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#autossh%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">autossh使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ollama-open-WebUI%E9%83%A8%E7%BD%B2%E6%97%B6%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E6%B2%A1%E6%9C%89%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">ollama+open WebUI部署时外网访问没有模型</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E9%9A%A7%E9%81%93"><span class="nav-number">3.</span> <span class="nav-text">反向隧道</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#autossh-%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">autossh 使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ollama-open-WebUI-%E9%83%A8%E7%BD%B2%E6%97%B6%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE%E6%B2%A1%E6%9C%89%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">ollama+open WebUI 部署时外网访问没有模型</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -373,7 +375,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -182,6 +182,114 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/14/AutoSSH/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/apple-touch-icon.png">
+      <meta itemprop="name" content="yukun">
+      <meta itemprop="description" content="专注分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="K">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/03/14/AutoSSH/" class="post-title-link" itemprop="url">autossh介绍</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2025-03-14 14:30:14 / Modified: 14:33:24" itemprop="dateCreated datePublished" datetime="2025-03-14T14:30:14+08:00">2025-03-14</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="什么是-Autossh？"><a href="#什么是-Autossh？" class="headerlink" title="什么是 Autossh？"></a>什么是 Autossh？</h2><p><code>autossh</code> 是一个增强版的 SSH 工具，用于自动监控和重启 SSH 隧道。如果网络不稳定或连接断开，<code>autossh</code> 会尝试重新建立连接，非常适合需要持久隧道的场景，比如你的 Open WebUI 和 Ollama 服务。</p>
+<hr>
+<h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><ol>
+<li><p><strong>安装 Autossh</strong>：</p>
+<ul>
+<li>macOS：<code>brew install autossh</code>（需先安装 Homebrew）。</li>
+<li>Ubuntu&#x2F;Debian：<code>sudo apt-get install autossh</code>。</li>
+<li>CentOS&#x2F;RHEL：<code>sudo yum install autossh</code>。</li>
+</ul>
+</li>
+<li><p><strong>SSH 密钥认证</strong>：</p>
+<ul>
+<li><code>autossh</code> 需要无密码登录，因为它无法交互输入密码。</li>
+<li>在旧电脑上生成密钥对：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096</span><br></pre></td></tr></table></figure>
+回车接受默认路径（<code>~/.ssh/id_rsa</code>），无需设置密码。</li>
+<li>将公钥添加到云服务器：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id root@yukun.xin</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>测试普通 SSH</strong>：</p>
+<ul>
+<li>先用普通 <code>ssh</code> 测试，确保连接正常。例如：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -R 0.0.0.0:3000:localhost:3000 root@yukun.xin</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="使用-Autossh-的步骤"><a href="#使用-Autossh-的步骤" class="headerlink" title="使用 Autossh 的步骤"></a>使用 Autossh 的步骤</h2><h3 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1. 基本用法"></a>1. 基本用法</h3><p><code>autossh</code> 的命令与 <code>ssh</code> 类似，只需将 <code>ssh</code> 替换为 <code>autossh</code>，并添加一些参数。</p>
+<ul>
+<li><strong>示例</strong>（单端口反向转发）：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autossh -M 0 -f -N -R 0.0.0.0:3000:localhost:3000 root@yukun.xin</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-M 0</code>：禁用监控端口（推荐使用 <code>ServerAlive</code> 替代，见下文）。</li>
+<li><code>-f</code>：后台运行。</li>
+<li><code>-N</code>：不执行远程命令，仅转发端口。</li>
+<li><code>-R 0.0.0.0:3000:localhost:3000</code>：反向转发，将云服务器的 <code>3000</code> 端口映射到旧电脑的 <code>localhost:3000</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-多端口转发"><a href="#2-多端口转发" class="headerlink" title="2. 多端口转发"></a>2. 多端口转发</h3><p>你需要同时映射 Open WebUI（<code>3000</code>）和 Ollama（<code>11434</code>）。命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autossh -M 0 -f -N -R 0.0.0.0:3000:localhost:3000 -R 0.0.0.0:11434:localhost:11434 root@yukun.xin</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这会将云服务器的 <code>3000</code> 和 <code>11434</code> 端口分别映射到旧电脑的对应端口。</li>
+</ul>
+<h3 id="3-增强稳定性"><a href="#3-增强稳定性" class="headerlink" title="3. 增强稳定性"></a>3. 增强稳定性</h3><p>添加 <code>ServerAlive</code> 参数，确保检测连接状态并自动重连：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autossh -M 0 -f -N -o &quot;ServerAliveInterval 30&quot; -o &quot;ServerAliveCountMax 3&quot; -R 0.0.0.0:3000:localhost:3000 -R 0.0.0.0:11434:localhost:11434 root@yukun.xin</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>ServerAliveInterval 30</code>：每 30 秒发送一次保活信号。</li>
+<li><code>ServerAliveCountMax 3</code>：连续 3 次未收到响应则认为连接断开，触发重连。</li>
+</ul>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="cn">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/14/%E4%BD%BF%E7%94%A8ssh%E5%8F%8D%E5%90%91%E9%9A%A7%E9%81%93%E8%BF%9B%E8%A1%8C%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%EF%BC%88%E5%AE%9E%E4%BE%8B%EF%BC%9Aopen%20webUI%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -207,7 +315,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2025-03-14 00:00:00 / Modified: 14:13:38" itemprop="dateCreated datePublished" datetime="2025-03-14T00:00:00+08:00">2025-03-14</time>
+              <time title="Created: 2025-03-14 00:00:00 / Modified: 14:31:13" itemprop="dateCreated datePublished" datetime="2025-03-14T00:00:00+08:00">2025-03-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -482,7 +590,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
