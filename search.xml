@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title>100个python库推荐</title>
+      <link href="/2025/03/19/100%E4%B8%AApython%E5%BA%93%E6%8E%A8%E8%8D%90/"/>
+      <url>/2025/03/19/100%E4%B8%AApython%E5%BA%93%E6%8E%A8%E8%8D%90/</url>
+      
+        <content type="html"><![CDATA[<p>序号 库名 作用 应用场景<br>1 NumPy 高性能多维数组和数学运算 数据分析、科学计算、矩阵运算<br>2 Pandas 数据操作和分析，支持数据帧处理 数据清洗、探索、时间序列分析<br>3 Scikit-learn 机器学习工具，支持分类、回归、聚类 预测建模、数据分类、特征工程<br>4 TensorFlow 深度学习框架，支持神经网络训练 图像识别、NLP、AI 研究<br>5 PyTorch 动态计算图的深度学习框架 学术研究、神经网络开发、原型设计<br>6 Matplotlib 2D 数据可视化工具 科学绘图、数据报告、统计分析<br>7 Flask 轻量级 Web 框架 RESTful API、小型 Web 应用<br>8 Django 功能强大的 Web 框架 企业级 Web 应用、CMS 开发<br>9 Requests 简化的 HTTP 请求库 API 调用、网页数据抓取<br>10 BeautifulSoup HTML&#x2F;XML 解析库 网页内容提取、数据爬取<br>11 SQLAlchemy ORM 和 SQL 工具包 数据库操作、Web 后端开发<br>12 asyncio 异步 I&#x2F;O 框架 高并发网络应用、异步编程<br>13 PyTest 单元测试框架 代码测试、质量保证<br>14 Logging 日志记录工具 应用调试、运行状态监控<br>15 Seaborn 基于 Matplotlib 的高级统计可视化 数据探索、统计图表、美观展示<br>16 SciPy 科学计算工具（优化、积分等） 工程计算、物理仿真、信号处理<br>17 FastAPI 现代高性能 Web 框架，支持异步 高性能 API、微服务开发<br>18 Scrapy 强大的爬虫框架 大规模网站爬取、数据采集<br>19 Selenium 浏览器自动化工具 Web 测试、动态网页抓取<br>20 Pillow 图像处理库 图像编辑、批量处理<br>21 OpenCV 计算机视觉库 图像识别、视频分析、实时处理<br>22 Keras 高层次神经网络 API 快速原型设计、深度学习模型<br>23 NLTK 自然语言处理工具 文本分析、分词、情感分析<br>24 SpaCy 高效 NLP 库 实体识别、句法分析<br>25 Transformers 预训练 NLP 模型库 文本生成、翻译、问答系统<br>26 Celery 分布式任务队列 后台任务处理、定时任务<br>27 aiohttp 异步 HTTP 客户端&#x2F;服务器 异步 API 调用、高性能 Web 服务<br>28 PyInstaller 打包 Python 脚本为可执行文件 桌面应用分发、跨平台部署<br>29 Argparse 命令行参数解析 脚本开发、命令行工具<br>30 Click 高级命令行界面工具 交互式 CLI 工具开发<br>31 Psycopg2 PostgreSQL 数据库适配器 PostgreSQL 操作<br>32 PyMySQL MySQL 数据库连接库 MySQL 操作<br>33 Redis-py Redis 客户端库 缓存管理、实时应用<br>34 Jupyter 交互式笔记本环境 数据分析、教学、原型开发<br>35 Plotly 交互式图表库 数据报告、科学可视化<br>36 Bokeh 交互式 Web 可视化 数据可视化、动态图表<br>37 Dash 数据可视化 Web 框架 交互式仪表盘开发<br>38 PyQt 跨平台 GUI 框架 复杂桌面应用开发<br>39 Tkinter 内置 GUI 工具包 简单桌面应用界面<br>40 Pygame 2D 游戏开发库 游戏原型、教育项目<br>41 Paramiko SSH 协议库 服务器自动化、文件传输<br>42 Cryptography 加密和安全通信工具 数据加密、安全协议实现<br>43 Joblib 并行计算和模型持久化 模型保存、大规模计算<br>44 Dask 并行计算和大数据处理 大规模数据分析、分布式计算<br>45 PySpark Spark 的 Python 接口 大数据分析、分布式 ML<br>46 Unittest 内置单元测试框架 模块测试、功能验证<br>47 Mock 模拟测试工具 测试隔离、模拟外部服务<br>48 PyPDF2 PDF 文件操作 PDF 提取、合并、编辑<br>49 XlsxWriter Excel 文件生成和编辑 报表生成、数据导出<br>50 Twisted 事件驱动网络编程框架 网络服务器、协议实现<br>51 Gevent 协程网络库 高并发网络应用<br>52 Pydantic 数据验证和设置管理 API 开发、配置管理<br>53 HTTPie 命令行 HTTP 客户端 API 测试、调试<br>54 Websockets WebSocket 协议实现 实时通信应用<br>55 Gunicorn WSGI HTTP 服务器 Web 应用部署<br>56 Uvicorn ASGI 服务器 FastAPI&#x2F;Django 异步部署<br>57 Starlette 轻量级 ASGI 框架 构建异步 Web 应用<br>58 Bottle 微型 Web 框架 小型 Web 应用、原型开发<br>59 Tornado 异步 Web 框架 高并发 Web 服务<br>60 Jinja2 模板引擎 Web 页面渲染<br>61 PyMongo MongoDB 客户端 NoSQL 数据库操作<br>62 SQLObject 轻量级 ORM 工具 数据库操作<br>63 PyArrow Apache Arrow 的 Python 绑定 大数据处理、跨语言数据交换<br>64 Polars 高性能数据帧库 大规模数据分析<br>65 Statsmodels 统计建模和分析 统计分析、时间序列建模<br>66 SymPy 符号数学库 数学计算、公式推导<br>67 NetworkX 网络分析和图算法 社交网络分析、图计算<br>68 PyTorch Lightning PyTorch 的高级封装 深度学习研究、模型训练<br>69 XGBoost 梯度提升机器学习库 竞赛建模、预测任务<br>70 LightGBM 高效梯度提升框架 大数据集机器学习<br>71 CatBoost 支持分类特征的梯度提升 机器学习任务<br>72 Gensim 主题建模和文档相似性分析 文本挖掘、语义分析<br>73 TextBlob 简化文本处理和 NLP 情感分析、文本分类<br>74 PyTorch Geometric 图神经网络库 图数据分析、推荐系统<br>75 Ray 分布式计算框架 并行任务、强化学习<br>76 Pendulum 日期时间处理库 时间操作、时区管理<br>77 Arrow 日期时间操作工具 时间格式化、计算<br>78 Schedule 轻量级定时任务库 简单定时任务<br>79 APScheduler 高级任务调度 复杂定时任务<br>80 Pyvisa 仪器控制库 实验室自动化、硬件控制<br>81 Pyserial 串口通信库 硬件通信、嵌入式开发<br>82 PyUSB USB 设备控制 硬件交互、设备开发<br>83 PyBluez Bluetooth 通信库 蓝牙设备开发<br>84 ReportLab PDF 生成工具 动态 PDF 报表<br>85 Pdfplumber PDF 内容提取 PDF 解析、数据提取<br>86 Openpyxl Excel 文件读写 Excel 操作、数据处理<br>87 Tabulate 美化表格输出 数据展示、命令行工具<br>88 Rich 终端美化库 漂亮的 CLI 输出<br>89 Typer 现代 CLI 框架 命令行工具开发<br>90 Fire 自动生成 CLI 快速脚本转 CLI<br>91 Pathlib 路径操作工具 文件系统操作<br>92 Shutil 文件操作工具 文件复制、移动、删除<br>93 Glob 文件路径匹配 文件搜索、批量处理<br>94 Tempfile 临时文件和目录管理 临时数据存储<br>95 Contextlib 上下文管理工具 资源管理、简化代码<br>96 Itertools 高效迭代工具 数据处理、组合生成<br>97 Collections 高级数据结构 计数器、双端队列等<br>98 Functools 高阶函数和工具 函数式编程、缓存<br>99 Operator 操作符函数 简化代码、函数式编程<br>100 Bisect 二分查找算法 有序列表操作</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用ffmpeg把MP4转成wav</title>
+      <link href="/2025/03/19/MP4%E8%BD%ACwav/"/>
+      <url>/2025/03/19/MP4%E8%BD%ACwav/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i /Download/ScreenRecording_03-19-2025 15-39-36_1.MP4&#x27; -vn -acodec pcm_s16le -ar 44100 -ac 1 /Desktop/jia_converted.wav</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>autossh介绍</title>
       <link href="/2025/03/14/AutoSSH/"/>
       <url>/2025/03/14/AutoSSH/</url>
